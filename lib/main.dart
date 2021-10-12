@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:example/controllers/maincontroller.dart';
+import 'package:example/models/mainmodel.dart';
 import 'package:example/pages/main/mainpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -13,7 +14,7 @@ class Sys extends StatelessWidget{
   @override
   Widget build(BuildContext context) => MultiProvider(
     providers: [
-      ChangeNotifierProvider<MainController>(create: (BuildContext context) => MainController())
+      ChangeNotifierProvider<MainController>(create: (BuildContext context) => MainController(model: MainModel()))
     ],
     child: PlatformBuild(),
   );
