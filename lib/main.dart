@@ -1,12 +1,13 @@
-import 'dart:io';
-
 import 'package:example/controllers/maincontroller.dart';
+import 'package:example/controllers/one_build_controller.dart';
 import 'package:example/models/mainmodel.dart';
+import 'package:example/models/one_build_model/one_build_model.dart';
 import 'package:example/pages/main/mainpage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:io';
 
 void main() => runApp(Sys());
 
@@ -14,7 +15,8 @@ class Sys extends StatelessWidget{
   @override
   Widget build(BuildContext context) => MultiProvider(
     providers: [
-      ChangeNotifierProvider<MainController>(create: (BuildContext context) => MainController(model: MainModel()))
+      ChangeNotifierProvider<MainController>(create: (BuildContext context) => MainController(model: MainModel())),
+      ChangeNotifierProvider<OneBuildController>(create: (BuildContext context) => OneBuildController(model: OneBuildModel()))
     ],
     child: PlatformBuild(),
   );

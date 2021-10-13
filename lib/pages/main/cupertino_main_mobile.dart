@@ -1,39 +1,40 @@
 import 'package:example/components/appbarjames.dart';
+import 'package:example/components/cupertino_appbar_james.dart';
 import 'package:example/components/fab.dart';
 import 'package:example/controllers/maincontroller.dart';
 import 'package:example/controllers/one_build_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class MainWeb extends StatelessWidget {
+class CupertinoMainMobile extends StatelessWidget {
   final MainController controller;
   final OneBuildController oneBuildController;
-  const MainWeb({Key? key, required this.controller, required this.oneBuildController}) : super(key: key);
+  const CupertinoMainMobile({Key? key, required this.controller, required this.oneBuildController}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBarJames(),
-    body: Container(
+  Widget build(BuildContext context) => CupertinoPageScaffold(
+    navigationBar: CupertinoAppBarJames(),
+    child: Container(
       width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          InkWell(
-            onTap: () => this.controller.minus(),
+          CupertinoButton(
+            onPressed: () => this.controller.minus(),
             child: Padding(
               padding: EdgeInsets.all(20.0),
               child: Text(this.controller.value.toString()),
             )
           ),
-          InkWell(
-            onTap: () => this.oneBuildController.show(context),
+          CupertinoButton(
+            onPressed: () => this.oneBuildController.show(context),
             child: Padding(
               padding: EdgeInsets.all(20.0),
               child: Text("OneBuildButton"),
             )
           ),
+          FAB(add: this.controller.add)
         ],
       ),
-    ),
-    floatingActionButton: FAB(add: this.controller.add),
+    )
   );
 }
